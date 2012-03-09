@@ -1,22 +1,22 @@
 Passo a passo de como instalar o Django e acessar o projeto
 
-Baixar e instalar o Django:
+1º Baixar o projeto pelo GitHub: https://github.com/carlosalefr/almoxarifado_patrimonio
 
-#wget "http://www.djangoproject.com/download/1.3/tarball/"
-#tar xzvf Django-1.3.tar.gz
-#cd Django-1.3
-#sudo python setup.py install
+2º Descompactar o arquivo e renomear a pasta para 'almoxarifado'
 
-Instalar o easy install e depois o django evolution:
+3º Acessar a pasta através do terminal e executar o comando: 
+   
+    #chmod a+x install.sh
+   
+4º Executar o comando:
 
-#sudo apt-get install python-setuptools
-#easy_install -U django_evolution
+    #./install.sh
+    
+    Siga as mensagens na tela e confirme a instalação quando necessário
+    
+5º Abra o navegador e acesse o endereço: 
 
-Acessar o diretório do projeto e executar o comando abaixo:
-python manage.py runserver
+    http:localhost:8000\admin
 
-Acessar o projeto no navegador:
-http://localhost:8000/admin
-
-Login: admin
-Senha: admin
+    Login: admin
+    Senha: admin
