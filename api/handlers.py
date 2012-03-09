@@ -1,6 +1,9 @@
 from piston.handler import BaseHandler
 from aplicacao.models import Patrimonio, SaidaProduto, Produto
 
+import json
+import urllib2
+
 class PatrimonioHandler (BaseHandler):
     allowed_methods = ('GET',)
     model = Patrimonio
@@ -15,6 +18,17 @@ class SaidaProdutoHandler (BaseHandler):
     def read(self, request, id):
         saida = SaidaProduto.objects.get(id=id)
         return saida
+        
+
+class ConsultaFornecedorHandler(BaseHandler):
+    allowed_methods = ("GET")
+
+    def read(self, request, fornecedor_id=None):
+        url = 'http://site' + str(fornecedor_id)
+        dados = urllib2.urlopen(url)
+        fornecedor = json.load(dados)
+        
+        return dados
         
         
 class ProdutoHandler (BaseHandler):
@@ -36,6 +50,8 @@ class ProdutoHandler (BaseHandler):
         
             return rc.CREATED
         return 'Nao foi possivel cadastrar o produto'     
-        
+
+
+
 
 
