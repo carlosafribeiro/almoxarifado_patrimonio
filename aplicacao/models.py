@@ -24,7 +24,6 @@ class Setor(models.Model):
 class Funcionario(models.Model):
     nome = models.CharField(max_length=100)
     telefone = models.CharField(max_length=10)
-    senha = models.CharField(max_length=10)
     
     def __unicode__(self):
         return self.nome
@@ -38,7 +37,7 @@ class SaidaProduto(models.Model):
     data = models.DateField(blank=True, default=datetime.today())
     funcionario = models.ForeignKey('Funcionario')
     
-    
+        
 class Patrimonio(models.Model):
     class Meta:
         ordering = ('-setor',)
