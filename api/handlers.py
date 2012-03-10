@@ -14,10 +14,12 @@ class PatrimonioHandler (BaseHandler):
             
 class SaidaProdutoHandler (BaseHandler):
     allowed_methods = ('GET',)
-    model = SaidaProduto
-    def read(self, request, id):
-        saida = SaidaProduto.objects.get(id=id)
-        return saida
+    model = SaidaProduto.objects
+    def read(self, request, saidaproduto_id=None):
+        if saidaproduto_id:
+            return self.model.get(pk=saidaproduto_id)
+        else:
+            return self.model.all()
         
 
 class ConsultaFornecedorHandler(BaseHandler):

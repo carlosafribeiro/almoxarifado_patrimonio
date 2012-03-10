@@ -8,8 +8,8 @@ produto_resource = Resource(ProdutoHandler)
 consulta_fornecedor_resource = Resource(ConsultaFornecedorHandler)
 
 urlpatterns = patterns('',
-    (r'^patrimonios/', patrimonio_resource),
-    (r'^saidaprodutos/', saidaproduto_resource),
-    (r'^produtos/', produto_resource),
+    (r'^patrimonios/(?P<patrimonio_id>.+)/$', patrimonio_resource),
+    (r'^saidaprodutos/(?P<saidaproduto_id>.+)/$', saidaproduto_resource),
+    (r'^produtos/(?P<produto_id>.+)/$', produto_resource),
     (r'^fornecedores/(?P<fornecedor_id>.+)/$', consulta_fornecedor_resource),
 )
