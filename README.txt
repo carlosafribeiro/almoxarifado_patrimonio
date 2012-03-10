@@ -1,4 +1,8 @@
-Passo a passo de como instalar o Django e acessar o projeto
+Trabalho de Tópicos Avançados
+Nomes: Carlos Alexandre Ferreira Ribeiro e Juliana Gonçalves Azevedo
+
+
+>>>>>>> Passo a passo de como instalar o Django e acessar o projeto
 
 1º Baixar o projeto pelo GitHub: https://github.com/carlosalefr/almoxarifado_patrimonio
 
@@ -20,3 +24,19 @@ Passo a passo de como instalar o Django e acessar o projeto
 
     Login: admin
     Senha: admin
+    
+    
+>>>>>>> Serviços Oferecidos
+
+- Lista com os patrimonios cadastrados
+
+  curl -u usuário:senha -H 'Content-Type:application/json' -X GET http://localhost:8000/api/patrimonios
+  
+- Lista com os produtos que saíram do almoxarifado
+
+  curl -u usuário:senha -H 'Content-Type:application/json' -X GET http://localhost:8000/api/saidaprodutos
+  
+- Cadastro de produto
+
+  curl -u usuario:senha -H 'Content-Type:application/json' -X POST -d'{"nome":"nome", "quantidade":"quantidade", "qtd_minima":"qtd_minima", "data_compra":"data_compra", "data_validade":"data_validade"}' http://localhost:8000/api/produtos
+
