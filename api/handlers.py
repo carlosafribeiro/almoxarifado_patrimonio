@@ -7,30 +7,28 @@ import urllib2
 class PatrimonioHandler (BaseHandler):
     allowed_methods = ('GET',)
     model = Patrimonio
-    def read(self, request):
-        patrimonio = Patrimonio.objects.all()
-        return patrimonio
+    def read(self, request, patrimonio_id=None):
+    
+        base = Patrimonio.objects
+    
+        if patrimonio_id:
+            return base.get(pk=patrimonio_id)
+        else:    
+            return base.all()
             
             
 class SaidaProdutoHandler (BaseHandler):
     allowed_methods = ('GET',)
-    model = SaidaProduto.objects
+    model = SaidaProduto
+    
     def read(self, request, saidaproduto_id=None):
+    
+        base = SaidaProduto.objects
+    
         if saidaproduto_id:
-            return self.model.get(pk=saidaproduto_id)
+            return base.get(pk=saidaproduto_id)
         else:
-            return self.model.all()
-        
-
-class ConsultaFornecedorHandler(BaseHandler):
-    allowed_methods = ("GET")
-
-    def read(self, request, fornecedor_id=None):
-        url = 'http://site' + str(fornecedor_id)
-        dados = urllib2.urlopen(url)
-        fornecedor = json.load(dados)
-        
-        return dados
+            return base.all()
         
         
 class ProdutoHandler (BaseHandler):
@@ -51,7 +49,42 @@ class ProdutoHandler (BaseHandler):
             produto_novo.save()
         
             return rc.CREATED
-        return 'Nao foi possivel cadastrar o produto'     
+        return 'Nao foi possivel cadastrar o produto' 
+        
+        
+    def delete(self, request, produto_id=None):
+        
+        produto = self.model.get(pk=produto_id)
+        produto.delete()
+
+        return rc.DELETED   
+        
+    
+    def update(self, request):
+        
+        dados = request.dados
+        
+        produto = self.model.get(pk=dados['produto_id'])
+        produto.nome=dados['nome']
+        produto.quantidade=dados['quantidade']
+        produto.qtd_minima=dados['qtd_minima']
+        produto.data_compra=dados['data_compra']
+        produto.data_validade=dados['data_validade']
+        produto.save()
+        
+        return rc.ALL_OK 
+        
+        
+        
+class ConsultaFornecedorHandler(BaseHandler):
+    allowed_methods = ("GET")
+
+    def read(self, request, fornecedor_id=None):
+        url = 'http://site' + str(fornecedor_id)
+        dados = urllib2.urlopen(url)
+        fornecedor = json.load(dados)
+        
+        return dados
 
 
 
