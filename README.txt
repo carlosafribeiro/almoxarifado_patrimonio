@@ -30,13 +30,14 @@ Nomes: Carlos Alexandre Ferreira Ribeiro e Juliana Gonçalves Azevedo
 
 - Lista com os patrimonios cadastrados
 
-  curl -u usuário:senha -H 'Content-Type:application/json' -X GET http://localhost:8000/api/patrimonios
+     http://localhost:8000/api/patrimonios
   
 - Lista com os produtos que saíram do almoxarifado
 
-  curl -u usuário:senha -H 'Content-Type:application/json' -X GET http://localhost:8000/api/saidaprodutos
+     http://localhost:8000/api/saidaprodutos
   
-- Cadastro de produto
+- Lista de produtos
 
-  curl -u usuario:senha -H 'Content-Type:application/json' -X POST -d'{"nome":"nome", "quantidade":"quantidade", "qtd_minima":"qtd_minima", "data_compra":"data_compra", "data_validade":"data_validade"}' http://localhost:8000/api/produtos
+     http://localhost:8000/api/produtos  
+     http://localhost:8000/api/produtos/2
 
